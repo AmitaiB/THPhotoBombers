@@ -18,7 +18,14 @@
     
     self.imageView = [UIImageView new];
     [self.contentView addSubview:self.imageView];
+    self.imageView.image = [UIImage imageNamed:@"food-restaurant-eat-snack"];
     return self;
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.imageView.frame = self.contentView.bounds;
 }
 
 

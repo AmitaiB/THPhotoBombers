@@ -7,6 +7,8 @@
 //
 
 #import "THPhotoBombersCollectionViewController.h"
+#import "THPhotoCell.h"
+#import <SimpleAuth.h>
 
 @interface THPhotoBombersCollectionViewController ()
 
@@ -37,10 +39,29 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[THPhotoCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"%@", text);
+    }];
+    [task resume];
 }
+
+-(void)instagramAuth {
+    SimpleAuth.configuration[@"instagram"] = @{
+                                               @"client_id" : @"CLIENT_ID",
+                                               SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
+                                               };
+    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {}];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
