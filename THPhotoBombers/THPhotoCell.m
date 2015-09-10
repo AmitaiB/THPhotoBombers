@@ -10,4 +10,16 @@
 
 @implementation THPhotoCell
 
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    
+    self.imageView = [UIImageView new];
+    [self.contentView addSubview:self.imageView];
+    return self;
+}
+
+
 @end
