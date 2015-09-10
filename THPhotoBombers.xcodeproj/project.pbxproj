@@ -15,6 +15,7 @@
 		380DF1471BA1CC2F00DBA20A /* THPhotoBombersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1461BA1CC2F00DBA20A /* THPhotoBombersTests.m */; };
 		380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */; };
 		380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1571BA1D6B000DBA20A /* THPhotoCell.m */; };
+		380DF16D1BA228F500DBA20A /* THPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF16C1BA228F500DBA20A /* THPConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoBombersCollectionViewController.m; sourceTree = "<group>"; };
 		380DF1561BA1D6B000DBA20A /* THPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPhotoCell.h; sourceTree = "<group>"; };
 		380DF1571BA1D6B000DBA20A /* THPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoCell.m; sourceTree = "<group>"; };
+		380DF16B1BA228F500DBA20A /* THPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPConstants.h; sourceTree = "<group>"; };
+		380DF16C1BA228F500DBA20A /* THPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPConstants.m; sourceTree = "<group>"; };
 		8DF7A797BF2AD0861A512281 /* Pods-THPhotoBombers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THPhotoBombers.release.xcconfig"; path = "Pods/Target Support Files/Pods-THPhotoBombers/Pods-THPhotoBombers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +110,8 @@
 			children = (
 				380DF12B1BA1CC2F00DBA20A /* Info.plist */,
 				380DF12C1BA1CC2F00DBA20A /* main.m */,
+				380DF16B1BA228F500DBA20A /* THPConstants.h */,
+				380DF16C1BA228F500DBA20A /* THPConstants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			files = (
 				380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */,
 				380DF1301BA1CC2F00DBA20A /* AppDelegate.m in Sources */,
+				380DF16D1BA228F500DBA20A /* THPConstants.m in Sources */,
 				380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */,
 				380DF12D1BA1CC2F00DBA20A /* main.m in Sources */,
 			);
