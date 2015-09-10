@@ -19,7 +19,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     
-    self.window.rootViewController = [[THPhotoBombersCollectionViewController alloc] init];
+    THPhotoBombersCollectionViewController *photosViewController = [[THPhotoBombersCollectionViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:photosViewController];
+    self.window.rootViewController = navigationController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
