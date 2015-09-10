@@ -24,6 +24,7 @@
     
     UINavigationBar *navigationBar = navigationController.navigationBar;
     navigationBar.barTintColor = [UIColor colorWithRed:242.0 / 255.0 green:122.0 /255 blue:87.0 /255.0 alpha:1.0];
+    navigationBar.barStyle = UIBarStyleBlackOpaque;
     
     self.window.rootViewController = navigationController;
     

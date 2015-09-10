@@ -13,6 +13,7 @@
 		380DF13B1BA1CC2F00DBA20A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 380DF1391BA1CC2F00DBA20A /* LaunchScreen.xib */; };
 		380DF1471BA1CC2F00DBA20A /* THPhotoBombersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1461BA1CC2F00DBA20A /* THPhotoBombersTests.m */; };
 		380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */; };
+		380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1571BA1D6B000DBA20A /* THPhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		380DF1461BA1CC2F00DBA20A /* THPhotoBombersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THPhotoBombersTests.m; sourceTree = "<group>"; };
 		380DF1531BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPhotoBombersCollectionViewController.h; sourceTree = "<group>"; };
 		380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoBombersCollectionViewController.m; sourceTree = "<group>"; };
+		380DF1561BA1D6B000DBA20A /* THPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPhotoCell.h; sourceTree = "<group>"; };
+		380DF1571BA1D6B000DBA20A /* THPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				380DF12A1BA1CC2F00DBA20A /* Supporting Files */,
 				380DF1531BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.h */,
 				380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */,
+				380DF1561BA1D6B000DBA20A /* THPhotoCell.h */,
+				380DF1571BA1D6B000DBA20A /* THPhotoCell.m */,
 			);
 			path = THPhotoBombers;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			files = (
 				380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */,
 				380DF1301BA1CC2F00DBA20A /* AppDelegate.m in Sources */,
+				380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */,
 				380DF12D1BA1CC2F00DBA20A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
