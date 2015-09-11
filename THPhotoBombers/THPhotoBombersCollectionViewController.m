@@ -84,10 +84,14 @@ static NSString * const reuseIdentifier = @"Cell";
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         NSLog(@"Response Dictionary: %@", responseDictionary);
         
-        self.photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
-        NSLog(@"Photos: %@", photos);
+        self.photos = [responseDictionary valueForKeyPath:@"data"];
+        NSLog(@"Photos: %@", self.photos);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
     }];
     [task resume];
+    
 }
 
 
@@ -115,13 +119,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.photos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    THPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor lightGrayColor];
-    // Configure the cell
+    cell.photo = self.photos[indexPath.row];
     
     return cell;
 }
