@@ -7,6 +7,7 @@
 //
 
 #import "THPhotoCell.h"
+#import <SAMCache.h>
 
 @implementation THPhotoCell
 
@@ -26,7 +27,8 @@
     _photo = photo;
     
         //download it in the setter!
-    NSURL *url = [NSURL URLWithString:_photo[@"images"][@"standard_resolution"][@"url"]];
+//    NSURL *url = [NSURL URLWithString:_photo[@"images"][@"standard_resolution"][@"url"]];
+    NSURL *url = [NSURL URLWithString:_photo[@"images"][@"thumbnail"][@"url"]];
     [self downloadPhotoWithURL:url];
 }
 
@@ -36,12 +38,21 @@
     self.imageView.frame = self.contentView.bounds;
 }
 
+    // Sam explains the whole function here: http://bit.ly/1UFS9GA around 3+ minutes in.
 -(void)downloadPhotoWithURL:(NSURL*)url {
+        // First check to see if the image is already local on the cache.
+    NSString *key = [NSString stringWithFormat:@"%@-thumbnail", self.photo[@"id"]];
+    UIImage *photo = [[SAMCache sharedCache] imageForKey:key];
+    if (photo) {
+        self.imageView.image = photo;
+        return;
+    }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         NSData *data = [NSData dataWithContentsOfURL:location];
         UIImage *image = [UIImage imageWithData:data];
+        [[SAMCache sharedCache] setImage:image forKey:key];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = image;

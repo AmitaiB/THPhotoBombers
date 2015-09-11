@@ -4,6 +4,8 @@
 target 'THPhotoBombers' do
 pod 'SimpleAuth/Instagram'
 pod 'SSKeychain', '~> 1.2.3'
+pod 'SAMCache', '~> 0.3'
+
 end
 
 target 'THPhotoBombersTests' do
