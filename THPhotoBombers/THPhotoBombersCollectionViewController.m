@@ -10,6 +10,7 @@
 #import "THPhotoCell.h"
 #import "THPConstants.h"
 #import <SimpleAuth.h>
+#import <SSKeychain.h>
 
 @interface THPhotoBombersCollectionViewController ()
 @property (nonatomic, strong) NSString *accessToken;
@@ -44,9 +45,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Do any additional setup after loading the view.
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.accessToken = [userDefaults objectForKey:@"accessToken"];
     
-    if (self.accessToken == nil) {
+    NSError *error = nil;
+    self.accessToken = [SSKeychain passwordForService:@"instagram" account:@"blickstein@gmail.com" error:&error];
+//    self.accessToken = [userDefaults objectForKey:@"accessToken"];
+//    if (self.accessToken == nil) {
+    if (error) {
         SimpleAuth.configuration[@"instagram"] = @{
                                                    @"client_id" : kInstagramClientID,
                                                    SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
@@ -54,9 +58,13 @@ static NSString * const reuseIdentifier = @"Cell";
         [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
             self.accessToken = responseObject[@"credentials"][@"token"];
             
+            [SSKeychain setPassword:self.accessToken forService:<#(NSString *)#> account:<#(NSString *)#> error:<#(NSError *__autoreleasing *)#>
+            
             [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
         }];
+    } else {
+        NSLog(@"Logged in!");
     }
     
 

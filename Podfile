@@ -3,6 +3,7 @@
 
 target 'THPhotoBombers' do
 pod 'SimpleAuth/Instagram'
+pod 'SSKeychain', '~> 1.2.3'
 end
 
 target 'THPhotoBombersTests' do
