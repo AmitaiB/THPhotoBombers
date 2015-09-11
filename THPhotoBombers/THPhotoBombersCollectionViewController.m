@@ -14,6 +14,7 @@
 
 @interface THPhotoBombersCollectionViewController ()
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSArray *photos;
 @end
 
 @implementation THPhotoBombersCollectionViewController
@@ -66,22 +67,27 @@ static NSString * const reuseIdentifier = @"Cell";
             [userDefaults synchronize];
         }];
     } else {
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken]];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
-                                                        completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-            NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-            NSLog(@"%@", text);
-        }];
-        [task resume];
+        [self refresh];
         
     }
     
 
 }
 
--(void)wellgetbacktothislater {
+-(void)refresh {
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        
+        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSLog(@"Response Dictionary: %@", responseDictionary);
+        
+        self.photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
+        NSLog(@"Photos: %@", photos);
+    }];
+    [task resume];
 }
 
 
