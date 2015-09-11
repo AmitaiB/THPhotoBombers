@@ -8,19 +8,20 @@
 
 #import "THPhotoBombersCollectionViewController.h"
 #import "THPhotoCell.h"
+#import "THPConstants.h"
 #import <SimpleAuth.h>
 
 @interface THPhotoBombersCollectionViewController ()
-
+@property (nonatomic, strong) NSString *accessToken;
 @end
 
 @implementation THPhotoBombersCollectionViewController
 
 -(instancetype)init {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(106.0, 106.0);
+    layout.itemSize                = CGSizeMake(106.0, 106.0);
     layout.minimumInteritemSpacing = 1.0;
-    layout.minimumLineSpacing = 1.0;
+    layout.minimumLineSpacing      = 1.0;
     
     
     return [self initWithCollectionViewLayout:layout];
@@ -42,8 +43,26 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView registerClass:[THPhotoCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults objectForKey:@"accessToken"];
     
+    if (self.accessToken == nil) {
+        SimpleAuth.configuration[@"instagram"] = @{
+                                                   @"client_id" : kInstagramClientID,
+                                                   SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
+                                                   };
+        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
+            self.accessToken = responseObject[@"credentials"][@"token"];
+            
+            [userDefaults setObject:self.accessToken forKey:@"accessToken"];
+            [userDefaults synchronize];
+        }];
+    }
     
+
+}
+
+-(void)wellgetbacktothislater {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURL *url = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -52,14 +71,6 @@ static NSString * const reuseIdentifier = @"Cell";
         NSLog(@"%@", text);
     }];
     [task resume];
-}
-
--(void)instagramAuth {
-    SimpleAuth.configuration[@"instagram"] = @{
-                                               @"client_id" : @"CLIENT_ID",
-                                               SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
-                                               };
-    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {}];
 }
 
 
