@@ -48,9 +48,11 @@ static NSString * const reuseIdentifier = @"Cell";
     
     NSError *error = nil;
     self.accessToken = [SSKeychain passwordForService:@"instagram" account:@"blickstein@gmail.com" error:&error];
-//    self.accessToken = [userDefaults objectForKey:@"accessToken"];
-//    if (self.accessToken == nil) {
     if (error) {
+        self.accessToken = [userDefaults objectForKey:@"accessToken"];
+    }
+    
+    if (self.accessToken == nil) {
         SimpleAuth.configuration[@"instagram"] = @{
                                                    @"client_id" : kInstagramClientID,
                                                    SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
@@ -58,27 +60,28 @@ static NSString * const reuseIdentifier = @"Cell";
         [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
             self.accessToken = responseObject[@"credentials"][@"token"];
             
-            [SSKeychain setPassword:self.accessToken forService:<#(NSString *)#> account:<#(NSString *)#> error:<#(NSError *__autoreleasing *)#>
+            [SSKeychain setPassword:self.accessToken forService:@"instagram" account:@"blickstein@gmail.com" error:&error];
             
             [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
         }];
     } else {
-        NSLog(@"Logged in!");
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
+                                                        completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+            NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+            NSLog(@"%@", text);
+        }];
+        [task resume];
+        
     }
     
 
 }
 
 -(void)wellgetbacktothislater {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSString *text = [NSString stringWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"%@", text);
-    }];
-    [task resume];
 }
 
 
