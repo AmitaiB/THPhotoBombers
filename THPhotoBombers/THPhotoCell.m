@@ -70,14 +70,13 @@
 
 -(void)like {
     DBLG
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Like this photo?" message:@"Would you like to ♡ this photo on Instagram?" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            // Like it on Instagram
-    }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Not this time" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:confirm];
-    [alert addAction:cancel];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"♡ Liked!" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [self.parentViewController presentViewController:alert animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+        
+    });
 }
 
 @end
