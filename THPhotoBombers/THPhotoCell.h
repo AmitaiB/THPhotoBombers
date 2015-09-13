@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSDictionary *photo;
+@property (nonatomic, weak) UIViewController *parentViewController;
 
 @end

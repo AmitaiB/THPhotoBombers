@@ -5,6 +5,7 @@
 //  Created by Amitai Blickstein on 9/10/15.
 //  Copyright (c) 2015 Amitai Blickstein, LLC. All rights reserved.
 //
+#define DBLG NSLog(@"<%@:%@:line %d, reporting!>", NSStringFromClass([self class]), NSStringFromSelector(_cmd), __LINE__);
 
 #import "THPhotoCell.h"
 #import <SAMCache.h>
@@ -16,6 +17,10 @@
     if (!self) {
         return nil;
     }
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(like)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:doubleTap];
     
     self.imageView = [UIImageView new];
     [self.contentView addSubview:self.imageView];
@@ -63,5 +68,16 @@
     
 }
 
+-(void)like {
+    DBLG
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Like this photo?" message:@"Would you like to ♡ this photo on Instagram?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // Like it on Instagram
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Not this time" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:confirm];
+    [alert addAction:cancel];
+    [self.parentViewController presentViewController:alert animated:YES completion:nil];
+}
 
 @end

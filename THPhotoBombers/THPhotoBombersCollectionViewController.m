@@ -15,6 +15,7 @@
 @interface THPhotoBombersCollectionViewController ()
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSArray *coverArtImages;
 @end
 
 @implementation THPhotoBombersCollectionViewController
@@ -126,6 +127,7 @@ static NSString * const reuseIdentifier = @"Cell";
     THPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor lightGrayColor];
     cell.photo = self.photos[indexPath.row];
+    cell.parentViewController = self;
     
     return cell;
 }
