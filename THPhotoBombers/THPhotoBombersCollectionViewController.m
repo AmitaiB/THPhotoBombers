@@ -59,7 +59,8 @@ static NSString * const reuseIdentifier = @"Cell";
                                                    @"client_id" : kInstagramClientID,
                                                    SimpleAuthRedirectURIKey : @"https://www.getpostman.com/oauth2/callback"
                                                    };
-        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
+        [SimpleAuth authorize:@"instagram" options:@{@"scope" : @[@"likes"]}
+                   completion:^(NSDictionary *responseObject, NSError *error) {
             self.accessToken = responseObject[@"credentials"][@"token"];
             
             [SSKeychain setPassword:self.accessToken forService:@"instagram" account:@"blickstein@gmail.com" error:&error];
