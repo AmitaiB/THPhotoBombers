@@ -22,9 +22,9 @@
     [super viewDidLoad];
 
 
+//    UIColor *seeThruCloudsColor = [UIColor colorFromHexCode:@"ECF0F1"];
     
-    
-    self.view.backgroundColor = [UIColor turquoiseColor];
+    self.view.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.9];
     
     CGRect fullScreen = [UIScreen mainScreen].bounds;
     self.imageView = [[UIImageView alloc] initWithFrame:fullScreen];

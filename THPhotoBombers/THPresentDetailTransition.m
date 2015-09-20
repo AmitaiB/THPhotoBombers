@@ -16,6 +16,7 @@
     
     detail.view.alpha = 0.0;
     detail.view.frame = containerView.bounds;
+    [containerView addSubview:detail.view];
     
     [UIView animateWithDuration:0.3 animations:^{
         detail.view.alpha = 1.0;
