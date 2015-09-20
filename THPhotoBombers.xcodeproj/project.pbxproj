@@ -19,6 +19,7 @@
 		384E679B1BAE4AA10012B301 /* THDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E679A1BAE4AA10012B301 /* THDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		384E679E1BAE4C540012B301 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E679C1BAE4C540012B301 /* UIColor+FlatUI.m */; settings = {ASSET_TAGS = (); }; };
 		385DB5711BAE45F800CEDF53 /* THPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385DB5701BAE45F800CEDF53 /* THPhotoController.m */; settings = {ASSET_TAGS = (); }; };
+		38C2499D1BAE7ABE007B28E2 /* THPresentDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C2499C1BAE7ABE007B28E2 /* THPresentDetailTransition.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		384E679D1BAE4C540012B301 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
 		385DB56F1BAE45F800CEDF53 /* THPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPhotoController.h; sourceTree = "<group>"; };
 		385DB5701BAE45F800CEDF53 /* THPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoController.m; sourceTree = "<group>"; };
+		38C2499B1BAE7ABE007B28E2 /* THPresentDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPresentDetailTransition.h; sourceTree = "<group>"; };
+		38C2499C1BAE7ABE007B28E2 /* THPresentDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPresentDetailTransition.m; sourceTree = "<group>"; };
 		8DF7A797BF2AD0861A512281 /* Pods-THPhotoBombers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THPhotoBombers.release.xcconfig"; path = "Pods/Target Support Files/Pods-THPhotoBombers/Pods-THPhotoBombers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +130,8 @@
 				384E679D1BAE4C540012B301 /* UIColor+FlatUI.h */,
 				380DF16B1BA228F500DBA20A /* THPConstants.h */,
 				380DF16C1BA228F500DBA20A /* THPConstants.m */,
+				38C2499B1BAE7ABE007B28E2 /* THPresentDetailTransition.h */,
+				38C2499C1BAE7ABE007B28E2 /* THPresentDetailTransition.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				384E679E1BAE4C540012B301 /* UIColor+FlatUI.m in Sources */,
 				380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */,
 				380DF1301BA1CC2F00DBA20A /* AppDelegate.m in Sources */,
+				38C2499D1BAE7ABE007B28E2 /* THPresentDetailTransition.m in Sources */,
 				385DB5711BAE45F800CEDF53 /* THPhotoController.m in Sources */,
 				380DF16D1BA228F500DBA20A /* THPConstants.m in Sources */,
 				380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */,
