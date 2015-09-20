@@ -21,15 +21,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
+    
+    
     self.view.backgroundColor = [UIColor turquoiseColor];
     
     CGRect fullScreen = [UIScreen mainScreen].bounds;
     self.imageView = [[UIImageView alloc] initWithFrame:fullScreen];
-//    [self.view addSubview:self.imageView];
+    [self.view addSubview:self.imageView];
     
     [THPhotoController imageForPhoto:self.photo size:@"standard_resolution" completion:^(UIImage *image) {
         self.imageView.image = image;
     }];
+    
+    UITapGestureRecognizer *tapToDismiss = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
+    [self.view addGestureRecognizer:tapToDismiss];
+}
+
+-(void)close {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    CGSize size = self.view.bounds.size;
+    CGSize imageSize = CGSizeMake(size.width, size.width);
+    
+    self.imageView.frame = CGRectMake(0.0, (size.height - imageSize.height) / 2, imageSize.width, imageSize.height);
 }
 
 - (void)didReceiveMemoryWarning {
