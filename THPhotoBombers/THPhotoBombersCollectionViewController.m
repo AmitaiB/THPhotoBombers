@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSArray *coverArtImages;
+
 @end
 
 @implementation THPhotoBombersCollectionViewController
@@ -25,7 +26,7 @@
     layout.itemSize                = CGSizeMake(106.0, 106.0);
     layout.minimumInteritemSpacing = 1.0;
     layout.minimumLineSpacing      = 1.0;
-    
+
     
     return [self initWithCollectionViewLayout:layout];
 }
@@ -34,7 +35,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.title = @"Photos Bombers";
@@ -67,6 +68,7 @@ static NSString * const reuseIdentifier = @"Cell";
             
             [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
+                       [self refresh];
         }];
     } else {
         [self refresh];
