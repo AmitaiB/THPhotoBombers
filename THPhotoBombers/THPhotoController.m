@@ -12,6 +12,12 @@
 @implementation THPhotoController
      ///When imageForPhoto is called, we pass in the photo dictionary from Instagram API, the requested size, and completion.
 + (void)imageForPhoto:(NSDictionary *)photo size:(NSString *)size completion:(void(^)(UIImage *image))completion {
+
+    if (photo == nil || size == nil || completion == nil) {
+        NSLog(@"Silent error: photo, size, or completion is nil.");
+        return;
+    }
+    
         // First check to see if the image is already local on the cache.
     NSString *key = [NSString stringWithFormat:@"%@-%@", photo[@"id"], size];
     UIImage *image = [[SAMCache sharedCache] imageForKey:key];
