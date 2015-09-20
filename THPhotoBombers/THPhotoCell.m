@@ -19,10 +19,8 @@
     if (!self) {
         return nil;
     }
-    
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(like)];
-    doubleTap.numberOfTapsRequired = 2;
-    [self addGestureRecognizer:doubleTap];
+    UILongPressGestureRecognizer *longPressToLike = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(like)];
+    [self addGestureRecognizer:longPressToLike];
     
     self.imageView = [UIImageView new];
     [self.contentView addSubview:self.imageView];

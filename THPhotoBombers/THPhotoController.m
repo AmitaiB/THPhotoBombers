@@ -20,7 +20,7 @@
     }
     
         // First check to see if the image is already local on the cache.
-    NSString *key = [NSString stringWithFormat:@"%@-%@", photo[@"id"], size];
+    NSString *key  = [NSString stringWithFormat:@"%@-%@", photo[@"id"], size];
     UIImage *image = [[SAMCache sharedCache] imageForKey:key];
     if (image) {
         completion(image);
@@ -34,7 +34,7 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSData *data = [NSData dataWithContentsOfURL:location];
+        NSData *data   = [NSData dataWithContentsOfURL:location];
         UIImage *image = [UIImage imageWithData:data];
         [[SAMCache sharedCache] setImage:image forKey:key];
         
