@@ -10,8 +10,6 @@
 #import <SAMCache.h>
 #import "THDetailViewController.h"
 
-
-
 @implementation THPhotoController
      ///When imageForPhoto is called, we pass in the photo dictionary from Instagram API, the requested size, and completion.
 + (void)imageForPhoto:(NSDictionary *)photo size:(NSString *)size completion:(void(^)(UIImage *image))completion {

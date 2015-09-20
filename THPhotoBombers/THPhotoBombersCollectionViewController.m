@@ -10,10 +10,11 @@
 #import "THPhotoCell.h"
 #import "THPConstants.h"
 #import "THDetailViewController.h"
+#import "THPresentDetailTransition.h"
 #import <SimpleAuth.h>
 #import <SSKeychain.h>
 
-@interface THPhotoBombersCollectionViewController ()
+@interface THPhotoBombersCollectionViewController () <UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSArray *coverArtImages;
@@ -141,39 +142,24 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *photo = self.photos[indexPath.row];
     THDetailViewController *viewController = [THDetailViewController new];
+    viewController.modalPresentationStyle = UIModalPresentationCustom;
+    viewController.transitioningDelegate = self;
     viewController.photo = photo;
+    
+    
+    
+    
     
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
+#pragma mark -
+#pragma mark - === UIViewControllerTransitioningDelegate ===
+#pragma mark -
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [THPresentDetailTransition new];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end
