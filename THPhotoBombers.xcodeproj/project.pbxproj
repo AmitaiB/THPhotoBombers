@@ -16,6 +16,7 @@
 		380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1541BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m */; };
 		380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF1571BA1D6B000DBA20A /* THPhotoCell.m */; };
 		380DF16D1BA228F500DBA20A /* THPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 380DF16C1BA228F500DBA20A /* THPConstants.m */; };
+		384B56741BAE867D004AD364 /* THDismissDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 384B56731BAE867D004AD364 /* THDismissDetailTransition.m */; settings = {ASSET_TAGS = (); }; };
 		384E679B1BAE4AA10012B301 /* THDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E679A1BAE4AA10012B301 /* THDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		384E679E1BAE4C540012B301 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E679C1BAE4C540012B301 /* UIColor+FlatUI.m */; settings = {ASSET_TAGS = (); }; };
 		385DB5711BAE45F800CEDF53 /* THPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 385DB5701BAE45F800CEDF53 /* THPhotoController.m */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +52,8 @@
 		380DF1571BA1D6B000DBA20A /* THPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPhotoCell.m; sourceTree = "<group>"; };
 		380DF16B1BA228F500DBA20A /* THPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THPConstants.h; sourceTree = "<group>"; };
 		380DF16C1BA228F500DBA20A /* THPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THPConstants.m; sourceTree = "<group>"; };
+		384B56721BAE867D004AD364 /* THDismissDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDismissDetailTransition.h; sourceTree = "<group>"; };
+		384B56731BAE867D004AD364 /* THDismissDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDismissDetailTransition.m; sourceTree = "<group>"; };
 		384E67991BAE4AA10012B301 /* THDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDetailViewController.h; sourceTree = "<group>"; };
 		384E679A1BAE4AA10012B301 /* THDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDetailViewController.m; sourceTree = "<group>"; };
 		384E679C1BAE4C540012B301 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				380DF16C1BA228F500DBA20A /* THPConstants.m */,
 				38C2499B1BAE7ABE007B28E2 /* THPresentDetailTransition.h */,
 				38C2499C1BAE7ABE007B28E2 /* THPresentDetailTransition.m */,
+				384B56721BAE867D004AD364 /* THDismissDetailTransition.h */,
+				384B56731BAE867D004AD364 /* THDismissDetailTransition.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				380DF1551BA1CEE400DBA20A /* THPhotoBombersCollectionViewController.m in Sources */,
 				380DF1301BA1CC2F00DBA20A /* AppDelegate.m in Sources */,
 				38C2499D1BAE7ABE007B28E2 /* THPresentDetailTransition.m in Sources */,
+				384B56741BAE867D004AD364 /* THDismissDetailTransition.m in Sources */,
 				385DB5711BAE45F800CEDF53 /* THPhotoController.m in Sources */,
 				380DF16D1BA228F500DBA20A /* THPConstants.m in Sources */,
 				380DF1581BA1D6B000DBA20A /* THPhotoCell.m in Sources */,

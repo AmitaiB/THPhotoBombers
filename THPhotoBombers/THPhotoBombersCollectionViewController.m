@@ -9,8 +9,11 @@
 #import "THPhotoBombersCollectionViewController.h"
 #import "THPhotoCell.h"
 #import "THPConstants.h"
+#import "THPhotoController.h"
 #import "THDetailViewController.h"
 #import "THPresentDetailTransition.h"
+#import "THDismissDetailTransition.h"
+#import <SAMCache.h>
 #import <SimpleAuth.h>
 #import <SSKeychain.h>
 
@@ -137,7 +140,9 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
+#pragma mark -
+#pragma mark - === UICollectionViewDelegate ===
+#pragma mark -
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *photo = self.photos[indexPath.row];
@@ -145,12 +150,17 @@ static NSString * const reuseIdentifier = @"Cell";
     viewController.modalPresentationStyle = UIModalPresentationCustom;
     viewController.transitioningDelegate = self;
     viewController.photo = photo;
+    NSString *size = @"standard-resolution";
+        ///I added this myself:
+    [THPhotoController imageForPhoto:photo size:size completion:^(UIImage *image) {
+        NSString *key = [NSString stringWithFormat:@"%@-%@", photo[@"id"], size];
+        [[SAMCache sharedCache]setImage:image forKey:key];
+        
+        [self presentViewController:viewController animated:YES completion:nil];
+    }];
     
     
     
-    
-    
-    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 #pragma mark -
@@ -159,6 +169,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return [THPresentDetailTransition new];
+}
+
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [THDismissDetailTransition new];
 }
 
 
