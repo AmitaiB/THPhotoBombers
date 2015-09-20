@@ -8,6 +8,9 @@
 
 #import "THPhotoController.h"
 #import <SAMCache.h>
+#import "THDetailViewController.h"
+
+
 
 @implementation THPhotoController
      ///When imageForPhoto is called, we pass in the photo dictionary from Instagram API, the requested size, and completion.

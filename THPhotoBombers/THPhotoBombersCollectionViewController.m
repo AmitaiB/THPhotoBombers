@@ -9,6 +9,7 @@
 #import "THPhotoBombersCollectionViewController.h"
 #import "THPhotoCell.h"
 #import "THPConstants.h"
+#import "THDetailViewController.h"
 #import <SimpleAuth.h>
 #import <SSKeychain.h>
 
@@ -136,6 +137,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *photo = self.photos[indexPath.row];
+    THDetailViewController *viewController = [THDetailViewController new];
+    viewController.photo = photo;
+    
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
