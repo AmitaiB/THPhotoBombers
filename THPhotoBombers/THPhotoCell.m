@@ -9,7 +9,7 @@
 
 #import "THPhotoBombersCollectionViewController.h"
 #import "THPhotoCell.h"
-#import <SAMCache.h>
+#import "THPhotoController.h"
 #import <SSKeychain.h>
 
 @implementation THPhotoCell
@@ -33,21 +33,15 @@
 -(void)setPhoto:(NSDictionary *)photo {
     _photo = photo;
     
-        //download it in the setter!
-//    NSURL *url = [NSURL URLWithString:_photo[@"images"][@"standard_resolution"][@"url"]];
-    NSURL *url = [NSURL URLWithString:_photo[@"images"][@"thumbnail"][@"url"]];
-    [self downloadPhotoWithURL:url];
+    [THPhotoController imageForPhoto:_photo size:@"thumbnail" completion:^(UIImage *image) {
+        self.imageView.image = image;
+    }];
 }
 
 -(void)layoutSubviews {
     [super layoutSubviews];
     
     self.imageView.frame = self.contentView.bounds;
-}
-
-    // Sam explains the whole function here: http://bit.ly/1UFS9GA around 3+ minutes in.
--(void)downloadPhotoWithURL:(NSURL*)url {
-
 }
 
 -(void)like {

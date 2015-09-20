@@ -20,6 +20,8 @@
         return;
     }
     
+        /// Sam explains the whole function here: http://bit.ly/1UFS9GA around 3+ minutes in.
+        ///(This is then moved to this function, explained here: http://bit.ly/1LFRB9w between minutes 4-5.
     NSURL *url = [NSURL URLWithString:photo[@"images"][size][@"url"]];
 
     NSURLSession *session = [NSURLSession sharedSession];
