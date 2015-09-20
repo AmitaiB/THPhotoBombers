@@ -72,6 +72,18 @@
 
 -(void)like {
     DBLG
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *accessToken = [SSKeychain passwordForService:@"instagram" account:@"blickstein@gmail.com"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", self.photo[@"id"], accessToken]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSLog(@"Response = %@", response);
+        NSLog(@"Data = %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    } ];
+    [task resume];
+
         // First, have a UI response, so the user knows what's going on.
     THPhotoBombersCollectionViewController *superVC = (THPhotoBombersCollectionViewController*)self.parentViewController;
     
@@ -80,22 +92,8 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [superVC dismissViewControllerAnimated:YES completion:nil];
-        
     });
     
-    NSString *accessToken = [SSKeychain passwordForService:@"instagram" account:@"blickstein@gmail.com"];
-
-        //Now do it.
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", self.photo[@"id"], accessToken]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSLog(@"Response = %@", response);
-        NSLog(@"Data = %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    } ];
-    [task resume];
 }
 
 @end
